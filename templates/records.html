@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Records</title></head>
+<body>
+  <h2>All QR Code Records</h2>
+  <a href="/export">Export to Excel</a>
+  <table border="1">
+    <tr><th>Owner</th><th>Contact</th><th>Vehicle</th><th>Emergency</th><th>Relationship</th><th>Blood Group</th><th>Delete</th></tr>
+    {% for row in rows %}
+      <tr>
+        {% for col in row %}<td>{{ col }}</td>{% endfor %}
+        <td><a href="/delete/{{ row[2] }}">Delete</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

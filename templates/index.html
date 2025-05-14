@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>QR Sticker Generator</title></head>
+<body>
+  <h1>QR Sticker Generator</h1>
+  <form method="POST">
+    {% for field in ["Owner Name", "Contact Number", "Vehicle Number", "Emergency Contact", "Relationship", "Blood Group"] %}
+      <label>{{ field }}:</label><input name="{{ field }}" required><br>
+    {% endfor %}
+    <input name="email" placeholder="Email to send (optional)">
+    <br><br>
+    <button name="action" value="generate">Generate QR</button>
+    <button name="action" value="email">Send via Email</button>
+    <button name="action" value="whatsapp">Send via WhatsApp</button>
+    <a href="/records">Show Records</a>
+  </form>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>{% for msg in messages %}<li>{{ msg }}</li>{% endfor %}</ul>
+    {% endif %}
+  {% endwith %}
+</body>
+</html>
